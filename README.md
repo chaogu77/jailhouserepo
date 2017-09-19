@@ -9,7 +9,7 @@ CS 279 HW2 for Brian, Karen, Julian & Zeerak.
 
 ## Folder Info
 
-/logs is where all the logs from each trial go. Each new log increments the file number. 
-/js has all the javascript
-/css has all the css
+*/logs is where all the logs from each trial go. Each new log increments the file number. 
+*/js has all the javascript
+*/css has all the css
 
