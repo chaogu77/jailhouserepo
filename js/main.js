@@ -50,30 +50,41 @@ function showPrompt(prompt) {
 
 // shows a trial by adding the necessary content to the trial template
 function showTrial(trial) {
+
+	// add data about trial to template
 	var t = document.querySelector('#trial');
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
 	t.content.querySelector('#trial-image').src = trial.trialImage;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
 	
+	// add click listeners to option buttons
 	var optionButtons = document.querySelectorAll('.option');
 	for (var i = 0; i < optionButtons.length; i++) {
 		optionButtons[i].addEventListener('click', function() { makeTrialSelection(this.id); });
 	}
 
+	// add mouse tracking
 	log.experiment[experimentProgress].mouse = [];
 	document.addEventListener('mousemove', recordMousePosition);
 }
 
+// called when an option is selected for a trial
 function makeTrialSelection(id) {
-	console.log(id);
+
+	// stop tracking mouse movement
 	document.removeEventListener('mousemove', recordMousePosition);
+	
+	// store the user's action
 	if (id == "optionA") log.experiment[experimentProgress].action = "optionA";
 	if (id == "optionB") log.experiment[experimentProgress].action = "optionB";
+	
+	// move to the trial results
 	clearContent();
 	showTrialComplete();
 }
 
+// shows the result at the end of the trial
 function showTrialComplete() {
 	var t = document.querySelector('#trial-complete');
 	t.content.querySelector('#trial-result').textContent = "was this right? who knows?";
