@@ -52,6 +52,7 @@ function showPrompt(prompt) {
 function showTrial(trial) {
 	var t = document.querySelector('#trial');
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
+	t.content.querySelector('#trial-image').src = trial.trialImage;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
 	
@@ -67,8 +68,8 @@ function showTrial(trial) {
 function makeTrialSelection(id) {
 	console.log(id);
 	document.removeEventListener('mousemove', recordMousePosition);
-	if (id == "optionA") log.experiment[experimentProgress].chosenOption = "optionA";
-	if (id == "optionB") log.experiment[experimentProgress].chosenOption = "optionB";
+	if (id == "optionA") log.experiment[experimentProgress].action = "optionA";
+	if (id == "optionB") log.experiment[experimentProgress].action = "optionB";
 	clearContent();
 	showTrialComplete();
 }
@@ -108,22 +109,25 @@ var experiment = [
 	{
 		dataType: 'prompt',
 		promptText: 'This is a test prompt'
-	}, 
-	{
-		dataType: 'trial',
-		trialText: 'This is a trial'
 	},
 	{
 		dataType: 'trial',
-		trialText: 'This is another trial'
+		trialText: 'This is a trial',
+		trialImage: 'images/elvis/elvis01.jpg'
+	},
+	{
+		dataType: 'trial',
+		trialText: 'This is another trial',
+		trialImage: 'images/not_elvis/not_elvis01.jpg'
 	},
 	{
 		dataType: 'prompt',
 		promptText: 'This is a second test prompt'
-	}, 
+	},
 	{
 		dataType: 'trial',
-		trialText: 'This is the last trial'
+		trialText: 'This is the last trial',
+		trialImage: 'images/elvis/elvis02.jpg'
 	}
 ];
 
