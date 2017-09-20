@@ -13,3 +13,8 @@ CS 279 HW2 for Brian, Karen, Julian & Zeerak.
 * /js has all the javascript
 * /css has all the css
 
+## File info
+
+* index.html is the main page of the experiment. It has a bunch of templates to represent the kind of data we want to show, and these templates are filled in at runtime with experiment data
+* log.php is called to send up the actual log of the experiment which is then stored
+
