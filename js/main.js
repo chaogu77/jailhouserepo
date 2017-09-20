@@ -11,8 +11,9 @@ function postData(logObject) {
 function recordMousePosition(event) {
 	mouseData = new Object();
 	mouseData.time = event.timeStamp;
-	mouseData.x = event.clientX - contentBlock.getBoundingBoundingClientRect().left;
-	mouseData.y = event.clientY - contentBlock.getBoundingBoundingClientRect().top;
+	mouseData.x = event.clientX - contentBlock.getBoundingClientRect().left;
+	mouseData.y = event.clientY - contentBlock.getBoundingClientRect().top;
+	console.log("mousemoving");
 	log.experiment[experimentProgress - 1].mouse.push(mouseData);
 }
 
@@ -54,8 +55,8 @@ function showTrial(trial) {
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
-	document.addEventListener('mousemove', recordMousePosition);
 	log.experiment[experimentProgress].mouse = [];
+	document.addEventListener('mousemove', recordMousePosition);
 }
 
 // a utility functiont to empty the content block
