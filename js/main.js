@@ -55,7 +55,6 @@ function showTrial(trial) {
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
 	t.content.querySelector('#trial-image').src = trial.trialImage;
 	var clone = document.importNode(t.content, true);
-
 	contentBlock.appendChild(clone);
 	log.experiment[experimentProgress].mouse = [];
 	document.addEventListener('mousemove', recordMousePosition);
@@ -69,6 +68,17 @@ function clearContent() {
 // move the experiment forward
 function advanceExperiment() {
 	clearContent();
+	if (experimentProgress < experiment.length) showExperimentBlock(experimentProgress);
+	else completeExperiment();
+	experimentProgress++;
+}
+
+// move a trial forward
+// probably can't complete an experiment but let's leave as is?
+// also, got to be a nicer way (i.e. getting the ID of event triggers)
+function advanceTrial(i) {
+	clearContent();
+	log.experiment[experimentProgress-1].action = i;
 	if (experimentProgress < experiment.length) showExperimentBlock(experimentProgress);
 	else completeExperiment();
 	experimentProgress++;
