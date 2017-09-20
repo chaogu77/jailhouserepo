@@ -13,8 +13,7 @@ function recordMousePosition(event) {
 	mouseData.time = event.timeStamp;
 	mouseData.x = event.clientX - contentBlock.getBoundingClientRect().left;
 	mouseData.y = event.clientY - contentBlock.getBoundingClientRect().top;
-	console.log("mousemoving");
-	log.experiment[experimentProgress - 1].mouse.push(mouseData);
+	log.experiment[experimentProgress].mouse.push(mouseData);
 }
 
 // things to be done when the trial completes
@@ -55,8 +54,30 @@ function showTrial(trial) {
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
+	
+	var optionButtons = document.querySelectorAll('.option');
+	for (var i = 0; i < optionButtons.length; i++) {
+		optionButtons[i].addEventListener('click', function() { makeTrialSelection(this.id); });
+	}
+
 	log.experiment[experimentProgress].mouse = [];
 	document.addEventListener('mousemove', recordMousePosition);
+}
+
+function makeTrialSelection(id) {
+	console.log(id);
+	document.removeEventListener('mousemove', recordMousePosition);
+	if (id == "optionA") log.experiment[experimentProgress].chosenOption = "optionA";
+	if (id == "optionB") log.experiment[experimentProgress].chosenOption = "optionB";
+	clearContent();
+	showTrialComplete();
+}
+
+function showTrialComplete() {
+	var t = document.querySelector('#trial-complete');
+	t.content.querySelector('#trial-result').textContent = "was this right? who knows?";
+	var clone = document.importNode(t.content, true);
+	contentBlock.appendChild(clone);
 }
 
 // a utility functiont to empty the content block
@@ -67,9 +88,9 @@ function clearContent() {
 // move the experiment forward
 function advanceExperiment() {
 	clearContent();
+	experimentProgress++;
 	if (experimentProgress < experiment.length) showExperimentBlock(experimentProgress);
 	else completeExperiment();
-	experimentProgress++;
 }
 
 // render the experiment step we are currently at
@@ -107,7 +128,7 @@ var experiment = [
 ];
 
 // current experiment step
-var experimentProgress = 0;
+var experimentProgress = -1;
 
 // create log object
 var log = new Object();
