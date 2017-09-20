@@ -67,7 +67,7 @@ function clearContent() {
 function advanceExperiment() {
 	clearContent();
 	if (experimentProgress < experiment.length) showExperimentBlock(experimentProgress);
-	else completeExperiment;
+	else completeExperiment();
 	experimentProgress++;
 }
 
