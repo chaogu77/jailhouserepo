@@ -7,15 +7,37 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="manifest" href="site.webmanifest">
-
-        <link rel="stylesheet" href="">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
 
-        <p>Move your mouse around to test mouse logging</p>
-        <a href="#" onclick="completeTrial();">Send logs up</a>
+    	<!-- The templates which we'll use to render everything -->
+    	<template id="user-info-form">
+    		<div>
+    			<input id="name" type="text" placeholder="Your Initials" />
+    			<button onclick="handleUserInfoSubmit()">Submit</button>
+    		</div>
+    	</template>
+    	<template id="prompt">
+    		<div id="prompt-text"></div>
+    		<button onclick="advanceExperiment()">Next</button>
+    	</template>
+    	<template id="trial">
+    		<div id="trial-text"></div>
+    		<button onclick="advanceExperiment()">Next</button>
+    	</template>
+    	<template id="experiment-end">
+    		<div>The experiment has ended</div>
+    		<button onclick="completeExperiment()">Send Up Logs</button>
+    	</template>
+    	<template id="end-thanks">
+    		<div>Thanks</div>
+    	</template>
+
+    	<!-- The actual content area in which the templates will be rendered -->
+    	<div id="content">
+        </div>
+
         <script src="js/main.js"></script>
 
     </body>
