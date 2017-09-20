@@ -143,6 +143,9 @@ var experiment = [
 ];
 
 // current experiment step
+// 		(this starts at -1 because we start at the user info form, which calls advanceExperiment() which increments
+// 		this before it actually renders anything)
+
 var experimentProgress = -1;
 
 // create log object
