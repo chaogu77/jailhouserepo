@@ -2,57 +2,72 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: -apple-system, 'Roboto', sans-serif;
+	text-align: center;
 }
 
 #content {
+	display: block;
+	margin: auto;
 	width: 600px;
 	height: 400px;
-	margin: auto;
 	padding: 40px;
 }
 
 #prompt-text {
-	font-weight: 900;
+	font-weight: 600;
 	font-size: 24px;
+}
+
+#trial-image {
+	margin: 0 auto;
+	width: 300px;
+	height: 300px;
 }
 
 button {
 	position: absolute;
 	font-size: 16px;
-	padding: 14px 40px;
 	border-radius: 3px;
-	text-transform: capitalize;
-	text-align: center;
-	vertical-align: middle;
-	/*font-weight: bold;*/
 	color: white;
+	border: none;
+	width: 100px;
+	height: 50px;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+button:focus {
+	outline:0;
 }
 
 button.precise {
+	position: absolute;
 	background-color: #008CBA;
-	width: 100px;
-	height: 50px;
 	margin: auto;
-	bottom: 200px;
+	bottom: 0;
 }
 
 button.precise:hover {
-	background-color: #00bfff;
+	background-color: #0099cc;
 }
 
-button.option {
+/*button.option {
 	height: 100px;
 	width: 100px;
-}
+}*/
 
 button.option.correct {
+	float: left;
 	background-color: #4CAF50;
 }
 button.option.correct:hover, button.option.correct:hover {
-	background-color: #71c174;
+	background-color: #5fb962;
 }
 
 button.option.incorrect {
+	float: right;
 	background-color: #f44336;
 }
 button.option.incorrect:hover, button.option.incorrect:active {
