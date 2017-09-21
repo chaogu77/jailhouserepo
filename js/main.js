@@ -13,7 +13,7 @@ function recordMousePosition(event) {
 	mouseData.time = event.timeStamp;
 	mouseData.x = event.clientX - contentBlock.getBoundingClientRect().left;
 	mouseData.y = event.clientY - contentBlock.getBoundingClientRect().top;
-	console.log(mouseData.x, mouseData.y);
+	//console.log(mouseData.x, mouseData.y);
 	log.experiment[experimentProgress].mouse.push(mouseData);
 }
 
@@ -92,7 +92,9 @@ function makeTrialSelection(id) {
 // shows the result at the end of the trial
 function showTrialComplete() {
 	var t = document.querySelector('#trial-complete');
-	t.content.querySelector('#trial-result').textContent = "was this right? who knows?";
+	t.content.querySelector('#trial-text').textContent = experiment[experimentProgress].trialText;
+	t.content.querySelector('#trial-image').src = experiment[experimentProgress].trialImage;
+	//t.content.querySelector('#trial-result').textContent = "Was this right? who knows?";
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
 }
@@ -130,7 +132,7 @@ function createExperiment() {
 
 	// generate first set of trials
 	var correctImageProbability = 0.8;
-	var correctLabelingProbabiilty = 0.9;
+	var correctLabelingProbabiilty = 0;
 	var imgCat = 'owl'
 
 	var prompt = {}
@@ -168,7 +170,7 @@ function createExperiment() {
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	prompt.promptText = 'Is this elvis?'
+	prompt.promptTitle = 'Is this elvis?'
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
@@ -214,7 +216,7 @@ function createExperiment() {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 7) + 1) + '.jpg';
 		}
 		trial.trialImage = imgPath;
-		trial.trialText = "Is this a hot dog?";
+		trial.trialTitle = "Is this a hot dog?";
 
 		if (Math.random() < correctLabelingProbabiilty) {
 			trial.showFlag = false;

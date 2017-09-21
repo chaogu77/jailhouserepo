@@ -29,7 +29,7 @@
         </div>
       </template>
     	<template id="trial">
-    		<div id="trial-text"></div>
+    		<h2 id="trial-text"></h2>
         <div id="flag"></div>
         <img id="trial-image"></img>
   	    <button class="option correct" id="optionA" onclick="pauseExperiment()">Yes</button>
@@ -37,7 +37,11 @@
     	</template>
       <template id="trial-complete">
         <div class="relative">
-          <div id="trial-result"></div>
+          <h2 id="trial-text"></h2>
+          <div>
+            <img id="trial-image"></img>
+          </div>
+          <!-- <div id="trial-result"></div> -->
           <button class="next" onclick="advanceExperiment()">Next</button>
         </div>
       </template>
