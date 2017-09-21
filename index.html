@@ -25,16 +25,17 @@
     	</template>
     	<template id="trial">
     		<div id="trial-text"></div>
+            <div id="ai-tag"></div>
             <img id="trial-image", width=300, height=300></img>
-    		<button class="option" id="optionA" onclick="">Option A</button>
-            <button class="option" id="optionB" onclick="">Option B</button>
+    		<button class="option correct" id="optionA" onclick="pauseExperiment()">Option A</button>
+            <button class="option incorrect" id="optionB" onclick="pauseExperiment()">Option B</button>
     	</template>
         <template id="trial-complete">
             <div id="trial-result"></div>
             <button class="precise" onclick="advanceExperiment()">Next</button>
         </template>
     	<template id="end">
-    		<div>Thanks</div>
+    		<div>Thanks!</div>
     	</template>
 
     	<!-- The actual content area in which the templates will be rendered -->

@@ -19,29 +19,42 @@ body {
 button {
 	position: absolute;
 	font-size: 16px;
+	padding: 14px 40px;
+	border-radius: 3px;
 	text-transform: capitalize;
 	text-align: center;
 	vertical-align: middle;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	color: white;
 }
 
 button.precise {
 	background-color: #008CBA;
-	width: 200px;
-	height: 100px;
+	width: 100px;
+	height: 50px;
 	margin: auto;
-	bottom: 100px;
+	bottom: 200px;
 }
 
-button.verdict {
-	height: 200px;
-	width: 200px;
+button.precise:hover {
+	background-color: #00bfff;
 }
 
-button.verdict.correct {
+button.option {
+	height: 100px;
+	width: 100px;
+}
+
+button.option.correct {
 	background-color: #4CAF50;
 }
-button.verdict.incorrect {
+button.option.correct:hover, button.option.correct:hover {
+	background-color: #71c174;
+}
+
+button.option.incorrect {
 	background-color: #f44336;
+}
+button.option.incorrect:hover, button.option.incorrect:active {
+	background-color: #f66055;
 }
