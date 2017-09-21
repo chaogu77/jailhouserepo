@@ -226,6 +226,39 @@ function createExperiment() {
 
 		experiment.push(trial)
 	}
+	
+	// generate fourth set of trials
+	var correctImageProbability = 0.8;
+	var correctLabelingProbabiilty = 0.9;
+	var imgCat = 'dog'
+
+	var prompt = {}
+	prompt.dataType = 'prompt';
+	prompt.promptText = 'Are these dogs?'
+	experiment.push(prompt);
+
+	for (var i = 0; i < 10; i++) {
+		var trial = {}
+		trial.dataType = 'trial';
+
+		var imgPath = ''
+		if (Math.random() < correctImageProbability) {
+			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * 23) + 1) + '.jpg';
+		} else {
+			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 7) + 1) + '.jpg';
+		}
+		trial.trialImage = imgPath;
+		trial.trialText = "Is this a dog?";
+
+		if (Math.random() < correctLabelingProbabiilty) {
+			trial.showFlag = false;
+		} else {
+			trial.showFlag = true;
+		}
+
+		experiment.push(trial)
+	}
+
 
 	return experiment;
 }

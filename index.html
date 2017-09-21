@@ -30,9 +30,13 @@
       </template>
     	<template id="trial">
     		<h2 id="trial-text"></h2>
-        <div id="flag"></div>
+        <div id="flag">
+          <svg>
+            <circle cx="40" cy="40" r="30" stroke="#bbb" stroke-width="2" fill="#F1C93C" />
+          </svg>
+        </div>
         <img id="trial-image"></img>
-  	    <button class="option correct" id="optionA" onclick="pauseExperiment()">Yes</button>
+        <button class="option correct" id="optionA" onclick="pauseExperiment()">Yes</button>
         <button class="option incorrect" id="optionB" onclick="pauseExperiment()">No</button>
     	</template>
       <template id="trial-complete">

@@ -93,3 +93,14 @@ input {
 	border: 1px solid #bbb;
 	display: block;
 }
+
+#flag>svg {
+	position: fixed;
+	height: 80px;
+	width: 80px;
+	top: 350px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	z-index: 10;
+}
