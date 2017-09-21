@@ -137,7 +137,7 @@ function createExperiment() {
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	prompt.promptTitle = 'Trial set of owls'
+	prompt.promptTitle = 'Trial Run'
 	prompt.promptText = 'We would like to observe how quickly people can categorize images. In the following screens, you’ll see a series of images categorized as owls. Please select “Owl” (left) or “Not Owl” (right) as quickly as possible. This is a trial run and no results are recorded.'
 	experiment.push(prompt);
 
@@ -202,7 +202,7 @@ function createExperiment() {
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	prompt.promptText = 'Are these hot dogs?'
+	prompt.promptTitle = 'Are these hot dogs?'
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
@@ -226,7 +226,7 @@ function createExperiment() {
 
 		experiment.push(trial)
 	}
-	
+
 	// generate fourth set of trials
 	var correctImageProbability = 0.8;
 	var correctLabelingProbabiilty = 0.9;
@@ -234,7 +234,7 @@ function createExperiment() {
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	prompt.promptText = 'Are these dogs?'
+	prompt.promptTitle = 'Are these dogs?'
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
