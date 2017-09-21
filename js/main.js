@@ -112,12 +112,6 @@ function advanceExperiment() {
 	else completeExperiment();
 }
 
-// move the experiment forward
-function pauseExperiment() {
-	// white overlay on image
-	// display advance button
-}
-
 // render the experiment step we are currently at
 function showExperimentBlock(i) {
 	if (experiment[i].dataType == 'prompt') showPrompt(experiment[i]);
@@ -170,7 +164,8 @@ function createExperiment() {
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	prompt.promptTitle = 'Is this elvis?'
+	prompt.promptTitle = 'Is this Elvis?'
+	prompt.promptText = "You’ll see a series of images categorized as Elvis. Please select if you think each image is actually Elvis (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
@@ -203,6 +198,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these hot dogs?'
+	prompt.promptText = "You’ll see a series of images categorized as hot dogs. Please select if you think each image is actually a hotdog (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
@@ -216,7 +212,7 @@ function createExperiment() {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 7) + 1) + '.jpg';
 		}
 		trial.trialImage = imgPath;
-		trial.trialTitle = "Is this a hot dog?";
+		trial.trialText = "Is this a hot dog?";
 
 		if (Math.random() < correctLabelingProbabiilty) {
 			trial.showFlag = false;
@@ -231,10 +227,10 @@ function createExperiment() {
 	var correctImageProbability = 0.8;
 	var correctLabelingProbabiilty = 0.9;
 	var imgCat = 'dog'
-
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these dogs?'
+	prompt.promptText = "You’ll see a series of images categorized as dogs. Please select if you think each image is actually a dog (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
