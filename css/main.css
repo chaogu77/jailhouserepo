@@ -69,3 +69,13 @@ button#optionB {
 button#optionB:hover, button#optionB:active {
 	background-color: #f66055;
 }
+
+input {
+	padding: 12px 8px;
+	font-size: 16px;
+	width: 400px;
+	margin: 16px auto;
+	border-radius: 2px;
+	border: 1px solid #bbb;
+	display: block;
+}
