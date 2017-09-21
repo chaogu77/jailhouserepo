@@ -13,6 +13,7 @@ function recordMousePosition(event) {
 	mouseData.time = event.timeStamp;
 	mouseData.x = event.clientX - contentBlock.getBoundingClientRect().left;
 	mouseData.y = event.clientY - contentBlock.getBoundingClientRect().top;
+	console.log(mouseData.x, mouseData.y);
 	log.experiment[experimentProgress].mouse.push(mouseData);
 }
 
@@ -57,7 +58,7 @@ function showTrial(trial) {
 	t.content.querySelector('#trial-image').src = trial.trialImage;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
-	
+
 	// add click listeners to option buttons
 	var optionButtons = document.querySelectorAll('.option');
 	for (var i = 0; i < optionButtons.length; i++) {
@@ -74,11 +75,11 @@ function makeTrialSelection(id) {
 
 	// stop tracking mouse movement
 	document.removeEventListener('mousemove', recordMousePosition);
-	
+
 	// store the user's action
 	if (id == "optionA") log.experiment[experimentProgress].action = "optionA";
 	if (id == "optionB") log.experiment[experimentProgress].action = "optionB";
-	
+
 	// move to the trial results
 	clearContent();
 	showTrialComplete();
