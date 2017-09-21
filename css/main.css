@@ -25,7 +25,7 @@ body {
 }
 
 button {
-	position: absolute;
+	position: relative;
 	font-size: 16px;
 	border-radius: 3px;
 	color: white;
@@ -43,33 +43,29 @@ button:focus {
 }
 
 button.precise {
-	position: absolute;
 	background-color: #008CBA;
 	margin: auto;
-	bottom: 0;
+	margin-bottom: 0;
 }
 
 button.precise:hover {
 	background-color: #0099cc;
 }
 
-/*button.option {
-	height: 100px;
-	width: 100px;
-}*/
-
-button.option.correct {
+button#optionA {
 	float: left;
+	margin-left: 0;
 	background-color: #4CAF50;
 }
-button.option.correct:hover, button.option.correct:hover {
+button#optionA:hover, button#optionA:hover {
 	background-color: #5fb962;
 }
 
-button.option.incorrect {
+button#optionB {
 	float: right;
+	margin-right: 0;
 	background-color: #f44336;
 }
-button.option.incorrect:hover, button.option.incorrect:active {
+button#optionB:hover, button#optionB:active {
 	background-color: #f66055;
 }
