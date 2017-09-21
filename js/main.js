@@ -259,7 +259,6 @@ function createExperiment() {
 		experiment.push(trial)
 	}
 
-
 	return experiment;
 }
 
