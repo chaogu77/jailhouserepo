@@ -56,7 +56,6 @@ function showTrial(trial) {
 	// add data about trial to template
 	var t = document.querySelector('#trial');
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
-	console.log(trial.flag)
 	if (trial.flag) {
 		t.content.querySelector('#flag').style.visibility = "visible";
 	}
@@ -136,10 +135,12 @@ function createTrial( correctImageProbability, correctLabelingProbabiilty, imgCa
 		var imgPath = ''
 		if (Math.random() < correctImageProbability) {
 			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * correct) + 1) + '.jpg';
-			trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = false : trial.flag = true;
+			if (imgCat == 'owl') {trial.flag = false;}
+			else {trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = false : trial.flag = true;}
 			} else {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * incorrect) + 1) + '.jpg';
-			trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = true : trial.flag = false;
+			if (imgCat == 'owl') {trial.flag = false;}
+			else {trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = true : trial.flag = false;}
 		}
 		trial.trialImage = imgPath;
 		trial.trialText = question;
