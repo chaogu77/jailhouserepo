@@ -18,13 +18,17 @@ body {
 	font-size: 24px;
 }
 
+#prompt-text {
+	padding: 50px 150px;
+}
+
 #trial-image {
 	margin: 0 auto;
 	width: 280px;
 	height: 280px;
 }
 
-#trial-result {
+#trial-result, #end {
 	padding-top: 150px;
 }
 
