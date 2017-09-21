@@ -112,12 +112,6 @@ function advanceExperiment() {
 	else completeExperiment();
 }
 
-// move the experiment forward
-function pauseExperiment() {
-	// white overlay on image
-	// display advance button
-}
-
 // render the experiment step we are currently at
 function showExperimentBlock(i) {
 	if (experiment[i].dataType == 'prompt') showPrompt(experiment[i]);
