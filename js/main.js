@@ -2,7 +2,7 @@
 function postData(logObject) {
 	var logJSON = JSON.stringify(logObject);
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "log.php", true);
+	xhttp.open("POST", "./log.php", true);
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send(logJSON);
 }
@@ -258,7 +258,7 @@ function createExperiment() {
 
 		experiment.push(trial)
 	}
-
+	
 	return experiment;
 }
 
