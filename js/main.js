@@ -120,80 +120,107 @@ function showExperimentBlock(i) {
 
 var contentBlock = document.querySelector('#content');
 
-// test experiment object, the experiment we generate should have a datatype, and then anything else
-// if anything needs to be rendered just add some html to the appropriate template in index.html
-// and then modify the show* function to give it content at runtime
-var experiment = [
-	{
-		dataType: 'prompt',
-		promptText: 'This is a test prompt'
-	},
-	{
-		dataType: 'trial',
-		trialText: 'This is a trial',
-		trialImage: 'images/elvis/elvis01.jpg'
-	},
-	{
-		dataType: 'trial',
-		trialText: 'This is another trial',
-		trialImage: 'images/not_elvis/not_elvis01.jpg'
-	},
-	{
-		dataType: 'prompt',
-		promptText: 'This is a second test prompt'
-	},
-	{
-		dataType: 'trial',
-		trialText: 'This is the last trial',
-		trialImage: 'images/elvis/elvis02.jpg'
-	}
-];
-
 // this function creates the experiment array
 function createExperiment() {
 	var experiment = []
 
 	// generate first set of trials
 	var correctImageProbability = 0.8;
-	var correctLabelingProbabiilty = 1.0;
+	var correctLabelingProbabiilty = 0.9;
+	var imgCat = 'owl'
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	promt.promptText = ''
+	prompt.promptText = 'Trial set of owls'
+	experiment.push(prompt);
 
-	for (int i = 0; i < 10; i++) {
+	for (var i = 0; i < 10; i++) {
 		var trial = {}
 		trial.dataType = 'trial';
-		trial.trialImage = '';
+
+		var imgPath = ''
+		if (Math.random() < correctImageProbability) {
+			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * 6) + 1) + '.jpg';
+		} else {
+			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 4) + 1) + '.jpg';
+		}
+		trial.trialImage = imgPath;
+
+		if (Math.random() < correctLabelingProbabiilty) {
+			trial.showFlag = false;
+		} else {
+			trial.showFlag = true;
+		}
+
 		experiment.push(trial)
 	}
 
 	// generate second set of trials
+	var correctImageProbability = 0.8;
+	var correctLabelingProbabiilty = 0.9;
+	var imgCat = 'elvis'
+
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	promt.promptText = ''
+	prompt.promptText = 'Is this elvis?'
+	experiment.push(prompt);
 
-	for (int i = 0; i < 10; i++) {
+	for (var i = 0; i < 10; i++) {
 		var trial = {}
 		trial.dataType = 'trial';
-		trial.trialImage = '';
+
+		var imgPath = ''
+		if (Math.random() < correctImageProbability) {
+			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * 25) + 1) + '.jpg';
+		} else {
+			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 11) + 1) + '.jpg';
+		}
+		trial.trialImage = imgPath;
+
+		if (Math.random() < correctLabelingProbabiilty) {
+			trial.showFlag = false;
+		} else {
+			trial.showFlag = true;
+		}
+
 		experiment.push(trial)
 	}
 
 	// generate third set of trials
+	var correctImageProbability = 0.8;
+	var correctLabelingProbabiilty = 0.9;
+	var imgCat = 'hotdog'
+
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	promt.promptText = ''
+	prompt.promptText = 'Are these hot dogs?'
+	experiment.push(prompt);
 
-	for (int i = 0; i < 10; i++) {
+	for (var i = 0; i < 10; i++) {
 		var trial = {}
 		trial.dataType = 'trial';
-		trial.trialImage = '';
+
+		var imgPath = ''
+		if (Math.random() < correctImageProbability) {
+			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * 23) + 1) + '.jpg';
+		} else {
+			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 7) + 1) + '.jpg';
+		}
+		trial.trialImage = imgPath;
+
+		if (Math.random() < correctLabelingProbabiilty) {
+			trial.showFlag = false;
+		} else {
+			trial.showFlag = true;
+		}
+
 		experiment.push(trial)
 	}
 
 	return experiment;
 }
+
+experiment = createExperiment();
 
 // current experiment step
 // (this starts at -1 because we start at the user info form, which calls advanceExperiment() which increments
