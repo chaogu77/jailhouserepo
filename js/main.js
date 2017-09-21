@@ -143,6 +143,52 @@ var experiment = [
 	}
 ];
 
+// this function creates the experiment array
+function createExperiment() {
+	var experiment = []
+
+	// generate first set of trials
+	var correctImageProbability = 0.8;
+	var correctLabelingProbabiilty = 1.0;
+
+	var prompt = {}
+	prompt.dataType = 'prompt';
+	promt.promptText = ''
+
+	for (int i = 0; i < 10; i++) {
+		var trial = {}
+		trial.dataType = 'trial';
+		trial.trialImage = '';
+		experiment.push(trial)
+	}
+
+	// generate second set of trials 
+	var prompt = {}
+	prompt.dataType = 'prompt';
+	promt.promptText = ''
+
+	for (int i = 0; i < 10; i++) {
+		var trial = {}
+		trial.dataType = 'trial';
+		trial.trialImage = '';
+		experiment.push(trial)
+	}
+
+	// generate third set of trials
+	var prompt = {}
+	prompt.dataType = 'prompt';
+	promt.promptText = ''
+
+	for (int i = 0; i < 10; i++) {
+		var trial = {}
+		trial.dataType = 'trial';
+		trial.trialImage = '';
+		experiment.push(trial)
+	}
+
+	return experiment;
+}
+
 // current experiment step
 // (this starts at -1 because we start at the user info form, which calls advanceExperiment() which increments
 // this before it actually renders anything)
