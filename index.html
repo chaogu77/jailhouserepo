@@ -13,27 +13,34 @@
 
     	<!-- The templates which we'll use to render everything -->
     	<template id="user-info-form">
-    		<div>
+    		<div class="relative">
+          <h2>Welcome</h2>
     			<input id="name" type="text" placeholder="Name" />
     			<input id="email" type="email" placeholder="Email" />
-                <button class="precise" onclick="handleUserInfoSubmit()">Submit</button>
+          <button class="next" onclick="handleUserInfoSubmit()">Submit</button>
     		</div>
     	</template>
     	<template id="prompt">
-    		<div id="prompt-text"></div>
-    		<button class="precise" onclick="advanceExperiment()">Next</button>
-    	</template>
+        <div class="relative">
+          <h2 id="prompt-title"></h2>
+      		<div id="prompt-text"></div>
+          <br>
+      		<button class="next" onclick="advanceExperiment()">Next</button>
+        </div>
+      </template>
     	<template id="trial">
     		<div id="trial-text"></div>
-            <div id="ai-tag"></div>
-            <img id="trial-image"></img>
-    		<button class="option correct" id="optionA" onclick="pauseExperiment()">Option A</button>
-            <button class="option incorrect" id="optionB" onclick="pauseExperiment()">Option B</button>
+        <div id="flag"></div>
+        <img id="trial-image"></img>
+  	    <button class="option correct" id="optionA" onclick="pauseExperiment()">Yes</button>
+        <button class="option incorrect" id="optionB" onclick="pauseExperiment()">No</button>
     	</template>
-        <template id="trial-complete">
-            <div id="trial-result"></div>
-            <button class="precise" onclick="advanceExperiment()">Next</button>
-        </template>
+      <template id="trial-complete">
+        <div class="relative">
+          <div id="trial-result"></div>
+          <button class="next" onclick="advanceExperiment()">Next</button>
+        </div>
+      </template>
     	<template id="end">
     		<div>Thanks!</div>
     	</template>

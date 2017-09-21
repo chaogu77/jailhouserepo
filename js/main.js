@@ -44,6 +44,7 @@ function handleUserInfoSubmit() {
 // shows a prompt by adding the necessary content to the prompt template
 function showPrompt(prompt) {
 	var t = document.querySelector('#prompt');
+	t.content.querySelector('#prompt-title').textContent = prompt.promptTitle;
 	t.content.querySelector('#prompt-text').textContent = prompt.promptText;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
@@ -55,6 +56,9 @@ function showTrial(trial) {
 	// add data about trial to template
 	var t = document.querySelector('#trial');
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
+	if (trial.flag) {
+		t.content.querySelector('#flag').style.visibility = "visible";
+	}
 	t.content.querySelector('#trial-image').src = trial.trialImage;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
@@ -131,7 +135,8 @@ function createExperiment() {
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
-	prompt.promptText = 'Trial set of owls'
+	prompt.promptTitle = 'Trial set of owls'
+	prompt.promptText = 'We would like to observe how quickly people can categorize images. In the following screens, you’ll see a series of images categorized as owls. Please select “Owl” (left) or “Not Owl” (right) as quickly as possible. This is a trial run and no results are recorded.'
 	experiment.push(prompt);
 
 	for (var i = 0; i < 10; i++) {
@@ -145,11 +150,12 @@ function createExperiment() {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 4) + 1) + '.jpg';
 		}
 		trial.trialImage = imgPath;
+		trial.trialText = "Is this an owl?";
 
 		if (Math.random() < correctLabelingProbabiilty) {
 			trial.showFlag = false;
 		} else {
-			trial.showFlag = true;
+			trial.nextag = true;
 		}
 
 		experiment.push(trial)
@@ -176,6 +182,7 @@ function createExperiment() {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 11) + 1) + '.jpg';
 		}
 		trial.trialImage = imgPath;
+		trial.trialText = "Is this Elvis?";
 
 		if (Math.random() < correctLabelingProbabiilty) {
 			trial.showFlag = false;
@@ -207,6 +214,7 @@ function createExperiment() {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * 7) + 1) + '.jpg';
 		}
 		trial.trialImage = imgPath;
+		trial.trialText = "Is this a hot dog?";
 
 		if (Math.random() < correctLabelingProbabiilty) {
 			trial.showFlag = false;
