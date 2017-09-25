@@ -135,10 +135,12 @@ function createTrial( correctImageProbability, correctLabelingProbabiilty, imgCa
 		var imgPath = ''
 		if (Math.random() < correctImageProbability) {
 			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * correct) + 1) + '.jpg';
+			// Exception for owl images - no flags in either scenario
 			if (imgCat == 'owl') {trial.flag = false;}
 			else {trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = false : trial.flag = true;}
 			} else {
 			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * incorrect) + 1) + '.jpg';
+			// Exception for owl images - no flags in either scenario
 			if (imgCat == 'owl') {trial.flag = false;}
 			else {trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = true : trial.flag = false;}
 		}
