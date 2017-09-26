@@ -37,6 +37,8 @@ function showUserInfoForm() {
 function handleUserInfoSubmit() {
 	var form = document.querySelector('#form');
 	log.name = document.querySelector('#name').value;
+	// log.email = document.querySelector('#email').value;
+	log.device = document.querySelector('#device').value;
 	advanceExperiment();
 	return false;
 }

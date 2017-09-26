@@ -105,6 +105,22 @@ input {
 	display: block;
 }
 
+select {
+    border: 1px solid #bbb;
+		padding: 12px 12px;
+		font-size: 16px;
+		width: 418px;
+		margin: 16px auto;
+    border-radius: 2px;
+    background: #fff;
+		display: block;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+select:focus {
+    outline: none;
+}
 /*#flag>svg {
 	position: fixed;
 	height: 80px;
