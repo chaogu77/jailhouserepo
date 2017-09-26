@@ -46,6 +46,7 @@ function showPrompt(prompt) {
 	var t = document.querySelector('#prompt');
 	t.content.querySelector('#prompt-title').textContent = prompt.promptTitle;
 	t.content.querySelector('#prompt-text').textContent = prompt.promptText;
+	t.content.querySelector('#prompt-image').src = prompt.promptImage;
 	var clone = document.importNode(t.content, true);
 	contentBlock.appendChild(clone);
 }
@@ -56,11 +57,18 @@ function showTrial(trial) {
 	// add data about trial to template
 	var t = document.querySelector('#trial');
 	t.content.querySelector('#trial-text').textContent = trial.trialText;
-	if (trial.flag) {
-		t.content.querySelector('#flag').style.visibility = "visible";
-	}
-	else {
+	if (trial.flag == null) {
 		t.content.querySelector('#flag').style.visibility = "hidden";
+	} else {
+		t.content.querySelector('#flag').style.visibility = "visible";
+		if (trial.flag == true) {
+			t.content.querySelector('#flag').textContent = "Likely correct";
+			t.content.querySelector('#flag').className = 'w3-tag flagCorrect';
+		} else {
+			t.content.querySelector('#flag').textContent = "Possibly wrong";
+			t.content.querySelector('#flag').className = 'w3-tag flagIncorrect';
+		}
+
 	}
 	t.content.querySelector('#trial-image').src = trial.trialImage;
 	var clone = document.importNode(t.content, true);
@@ -123,27 +131,59 @@ function showExperimentBlock(i) {
 
 var contentBlock = document.querySelector('#content');
 
+// helper function returns randomly-ordered array
+function image_list(imgCat, correct, count) {
+	// empty array for list
+	list = [];
+	var num = 0;
+	var imgPath = '';
+	// Continues until list is desired length.
+	for (var i = 1; i <= count; i++){
+		if (correct == true) {
+			imgPath = 'images/' + imgCat + '/' + imgCat + i + '.jpg';
+		} else {
+			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + i + '.jpg';
+		}
+		list.push(imgPath)
+	}
+
+	// Shuffle
+	for (var i = list.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = list[i];
+        list[i] = list[j];
+        list[j] = temp;
+    }
+	console.log(list)
+	console.log(list.length)
+	return list
+}
+
 // function for looping a trial
-function createTrial( correctImageProbability, correctLabelingProbabiilty, imgCat, prompt, question, experiment, correct, incorrect) {
+function createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, question, experiment, correct, incorrect) {
 
 	experiment.push(prompt);
+	// Get list of img paths
+	correctImages = image_list(imgCat, true, correct)
+	incorrectImages = image_list(imgCat, false, incorrect)
 
+	// 10 images per round
 	for (var i = 0; i < 10; i++) {
 		var trial = {}
 		trial.dataType = 'trial';
 
 		var imgPath = ''
 		if (Math.random() < correctImageProbability) {
-			imgPath = 'images/' + imgCat + '/' + imgCat + Math.floor((Math.random() * correct) + 1) + '.jpg';
-			// Exception for owl images - no flags in either scenario
-			if (imgCat == 'owl') {trial.flag = false;}
-			else {trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = false : trial.flag = true;}
-			} else {
-			imgPath = 'images/not_' + imgCat + '/' + 'not_' + imgCat + Math.floor((Math.random() * incorrect) + 1) + '.jpg';
-			// Exception for owl images - no flags in either scenario
-			if (imgCat == 'owl') {trial.flag = false;}
-			else {trial.flag = (Math.random() < correctLabelingProbabiilty) ? trial.flag = true : trial.flag = false;}
+			imgPath = correctImages.pop()
+			correctImages.unshift(imgPath) // ! so list never becomes empty
+			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = false : trial.flag = true;
+		} else {
+			imgPath = incorrectImages.pop()
+			incorrectImages.unshift(imgPath) // ! so list never becomes empty
+			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = true : trial.flag = false;
 		}
+		// Exception for owl images - no flags in either scenario
+		if (imgCat == 'owl') {trial.flag = null;}
 		trial.trialImage = imgPath;
 		trial.trialText = question;
 
@@ -156,56 +196,60 @@ function createExperiment() {
 
 	var experiment = [];
 	// generate first set of trials
-	var correctImageProbability = 0.8;
-	var correctLabelingProbabiilty = 1;
+	var correctImageProbability = 0.6;
+	var correctLabelingProbability = 1;
 	var imgCat = 'owl';
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Trial Run'
 	prompt.promptText = 'We would like to observe how quickly people can categorize images. In the following screens, you’ll see a series of images categorized as owls. Please select “Owl” (left) or “Not Owl” (right) as quickly as possible. This is a trial run and no results are recorded.'
+	prompt.promptImage = 'images/tutorial/tutorial_owl.jpg'
 	experiment.push(prompt);
 
-	createTrial( correctImageProbability, correctLabelingProbabiilty, imgCat, prompt, "Is this an owl?", experiment, 6, 4);
+	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this an owl?", experiment, 6, 4);
 
 	// generate second set of trials
-	var correctImageProbability = 0.8;
-	var correctLabelingProbabiilty = 0.9;
-	var imgCat = 'elvis'
+	var correctImageProbability = 0.7;
+	var correctLabelingProbability = 0.9;
+	var imgCat = 'Elvis'
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Is this Elvis?'
 	prompt.promptText = "You’ll see a series of images categorized as Elvis. Please select if you think each image is actually Elvis (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
+	prompt.promptImage = 'images/tutorial/tutorial_Elvis.jpg'
 	experiment.push(prompt);
 
-	createTrial( correctImageProbability, correctLabelingProbabiilty, imgCat, prompt, "Is this Elvis?", experiment, 25, 11);
+	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this Elvis?", experiment, 10, 3);
 
 	// generate third set of trials
-	var correctImageProbability = 0.8;
-	var correctLabelingProbabiilty = 0.9;
+	var correctImageProbability = 0.7;
+	var correctLabelingProbability = 0.9;
 	var imgCat = 'hotdog'
 
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these hot dogs?'
 	prompt.promptText = "You’ll see a series of images categorized as hot dogs. Please select if you think each image is actually a hotdog (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
+	prompt.promptImage = 'images/tutorial/tutorial_hotdog.jpg'
 	experiment.push(prompt);
 
-	createTrial( correctImageProbability, correctLabelingProbabiilty, imgCat, prompt, "Is this a hot dog?", experiment, 23, 7);
+	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this a hot dog?", experiment, 10, 3);
 
 	// generate fourth set of trials
-	var correctImageProbability = 0.8;
-	var correctLabelingProbabiilty = 0.9;
+	var correctImageProbability = 0.7;
+	var correctLabelingProbability = 0.9;
 	var imgCat = 'dog'
 	var prompt = {}
 
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these dogs?'
 	prompt.promptText = "You’ll see a series of images categorized as dogs. Please select if you think each image is actually a dog (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
+	prompt.promptImage = 'images/tutorial/tutorial_dog.jpg'
 	experiment.push(prompt);
 
-	createTrial( correctImageProbability, correctLabelingProbabiilty, imgCat, prompt, "Is this a dog?", experiment, 22, 7);
+	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this a dog?", experiment, 10, 3);
 
 	return experiment;
 }

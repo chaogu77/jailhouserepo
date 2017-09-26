@@ -19,7 +19,14 @@ body {
 }
 
 #prompt-text {
-	padding: 50px 150px;
+	padding: 0 50px;
+	text-align: left;
+}
+#prompt-image {
+	/*padding: 50px;*/
+	width: 200px;
+	border: 1px solid #ccc;
+	margin: 10px auto 20px auto;
 }
 
 #trial-image {
@@ -98,7 +105,7 @@ input {
 	display: block;
 }
 
-#flag>svg {
+/*#flag>svg {
 	position: fixed;
 	height: 80px;
 	width: 80px;
@@ -107,4 +114,30 @@ input {
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 	z-index: 10;
+}*/
+
+#flag {
+	position: fixed;
+	padding: 8px;
+	text-transform: uppercase;
+	font-size: 10px;
+	height: 10px;
+	width: 100px;
+	top: 375px;
+	left: 50%;
+	border-radius: 2px;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	z-index: 10;
+}
+
+#flag.flagCorrect {
+	background-color: #ccc;
+	color: white;
+	border: 1px solid white;
+}
+#flag.flagIncorrect {
+	background-color: #fff093;
+	color: #bc3434;
+	border: 1px solid #bc3434;
 }
