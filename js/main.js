@@ -264,7 +264,6 @@ var experimentProgress = -1;
 var log = new Object();
 log.date = new Date();
 log.experiment = experiment;
-console.log(experiment);
 
 // start by rendering the user info form
 showUserInfoForm();
