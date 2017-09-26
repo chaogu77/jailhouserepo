@@ -65,7 +65,7 @@ function showTrial(trial) {
 			t.content.querySelector('#flag').textContent = "Likely correct";
 			t.content.querySelector('#flag').className = 'w3-tag flagCorrect';
 		} else {
-			t.content.querySelector('#flag').textContent = "Possibly wrong";
+			t.content.querySelector('#flag').textContent = "Likely incorrect";
 			t.content.querySelector('#flag').className = 'w3-tag flagIncorrect';
 		}
 
@@ -203,7 +203,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Trial Run'
-	prompt.promptText = 'We would like to observe how quickly people can categorize images. In the following screens, you’ll see a series of images categorized as owls. Please select “Owl” (left) or “Not Owl” (right) as quickly as possible. This is a trial run and no results are recorded.'
+	prompt.promptText = 'We would like to observe how quickly people can categorize images. In the following screens, you’ll see a series of images categorized as owls. Please select “Owl” (left) or “Not Owl” (right) as quickly and as accurately as possible. This is a trial run and no results are recorded.'
 	prompt.promptImage = 'images/tutorial/tutorial_owl.jpg'
 	experiment.push(prompt);
 
@@ -217,7 +217,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Is this Elvis?'
-	prompt.promptText = "You’ll see a series of images categorized as Elvis. Please select if you think each image is actually Elvis (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
+	prompt.promptText = 'You’ll see a series of images categorized as Elvis. Please select if you think each image is actually Elvis ("Yes" on the left, "No" on the right). We’ve developed an image-classification bot to help you — it will label dubious images with a yellow marker, and likely images with a grey marker.'
 	prompt.promptImage = 'images/tutorial/tutorial_Elvis.jpg'
 	experiment.push(prompt);
 
@@ -231,7 +231,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these hot dogs?'
-	prompt.promptText = "You’ll see a series of images categorized as hot dogs. Please select if you think each image is actually a hotdog (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
+	prompt.promptText = 'You’ll see a series of images categorized as hot dogs. Please select if you think each image is actually a hotdog ("Yes" on the left, "No" on the right). We’ve developed an image-classification bot to help you — it will label dubious images with a yellow marker, and likely images with a grey marker.'
 	prompt.promptImage = 'images/tutorial/tutorial_hotdog.jpg'
 	experiment.push(prompt);
 
@@ -245,7 +245,7 @@ function createExperiment() {
 
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these dogs?'
-	prompt.promptText = "You’ll see a series of images categorized as dogs. Please select if you think each image is actually a dog (Yes on left, No on right). We've developed an image-recognition bot to help you--it will label dubious images with a yellow dot."
+	prompt.promptText = 'You’ll see a series of images categorized as dogs. Please select if you think each image is actually a dog ("Yes" on the left, "No" on the right). We’ve developed an image-classification bot to help you — it will label dubious images with a yellow marker, and likely images with a grey marker.'
 	prompt.promptImage = 'images/tutorial/tutorial_dog.jpg'
 	experiment.push(prompt);
 
