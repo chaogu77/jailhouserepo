@@ -161,8 +161,6 @@ function image_list(imgCat, correct, count) {
 
 // function for looping a trial
 function createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, question, experiment, correct, incorrect) {
-
-	experiment.push(prompt);
 	// Get list of img paths
 	correctImages = image_list(imgCat, true, correct)
 	incorrectImages = image_list(imgCat, false, incorrect)
@@ -266,6 +264,7 @@ var experimentProgress = -1;
 var log = new Object();
 log.date = new Date();
 log.experiment = experiment;
+console.log(experiment);
 
 // start by rendering the user info form
 showUserInfoForm();
