@@ -249,7 +249,7 @@ function createExperiment() {
 	prompt.promptImage = 'images/tutorial/tutorial_dog.jpg'
 	experiment.push(prompt);
 
-	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this a dog?", experiment, 10, 3);
+	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this a dog?", experiment, 7, 3);
 
 	return experiment;
 }
