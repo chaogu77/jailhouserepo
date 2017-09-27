@@ -21,12 +21,12 @@ body {
 #prompt-text {
 	padding: 0 50px;
 	text-align: left;
+	white-space: pre-line;
 }
 #prompt-image {
-	/*padding: 50px;*/
 	width: 200px;
 	border: 1px solid #ccc;
-	margin: 10px auto 20px auto;
+	margin: 0px auto 12px auto;
 }
 
 #trial-image {
