@@ -182,8 +182,10 @@ function createTrial( correctImageProbability, correctLabelingProbability, imgCa
 			incorrectImages.unshift(imgPath) // ! so list never becomes empty
 			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = false : trial.flag = true;
 		}
+
 		// Exception for owl images - no flags in either scenario
 		if (imgCat == 'owl') {trial.flag = null;}
+		
 		trial.trialImage = imgPath;
 		trial.trialText = question;
 
@@ -203,7 +205,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Trial Run'
-	prompt.promptText = 'We would like to observe how quickly people can categorize images. In the following screens, you’ll see a series of images categorized as owls. \r\n\r\nPlease select “Owl” (left) or “Not Owl” (right) as quickly and as accurately as possible. This is a trial run.'
+	prompt.promptText = 'We would like to observe how quickly people can categorize images. \r\n\r\nFor each image in the following screens please identify if it is an “Owl” (left) or “Not Owl” (right) as quickly and as accurately as possible. This is a trial run.'
 	prompt.promptImage = 'images/tutorial/tutorial_owl.jpg'
 	experiment.push(prompt);
 
@@ -217,7 +219,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Is this Elvis?'
-	prompt.promptText = 'Now you’ll see a series of images categorized as Elvis. Please select if you think each image is actually Elvis as quickly and accurately as possible. \r\n\r\nWe are using some Artificial Intelligence to help you — it will label dubious images with a yellow marker, and images that are likely Elvis with a grey marker.'
+	prompt.promptText = 'From here on, some Artificial Intelligence will help you categorize. \r\n\r\nThe following images were classified as Elvis. Please select if you think it is actually Elvis as quickly and accurately as possible. \r\n\r\nOur Artificial Intelligence will label dubious images with a yellow marker, and images that are likely Elvis with a grey marker.'
 	prompt.promptImage = 'images/tutorial/tutorial_elvis.jpg'
 	experiment.push(prompt);
 
@@ -231,7 +233,7 @@ function createExperiment() {
 	var prompt = {}
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these hot dogs?'
-	prompt.promptText = 'Now you’ll see a series of images categorized as hot dogs. Please select if you think each image is actually a hot dog as quickly and accurately as possible. \r\n\r\nAs before, the Artificial Intelligence will help by labeling dubious images with a yellow marker, and images that are likely hot dogs with a grey marker.'
+	prompt.promptText = 'Now you’ll see images classified as hot dogs. Please select if you think each image is actually a hot dog as quickly and accurately as possible. \r\n\r\nAs before, the Artificial Intelligence will help by labeling dubious images with a yellow marker, and images that are likely hot dogs with a grey marker.'
 	prompt.promptImage = 'images/tutorial/tutorial_hotdog.jpg'
 	experiment.push(prompt);
 
@@ -245,7 +247,7 @@ function createExperiment() {
 
 	prompt.dataType = 'prompt';
 	prompt.promptTitle = 'Are these dogs?'
-	prompt.promptText = 'Now you’ll see a series of images categorized as dogs. Please select if you think each image is actually a  dog as quickly and accurately as possible. \r\n\r\nAs before, the Artificial Intelligence will help by labeling dubious images with a yellow marker, and images that are likely dogs with a grey marker.'
+	prompt.promptText = 'Now you’ll see of images categorized as dogs. Please select if you think each image is actually a dog as quickly and accurately as possible. \r\n\r\nAs before, the Artificial Intelligence will help by labeling dubious images with a yellow marker, and images that are likely dogs with a grey marker.'
 	prompt.promptImage = 'images/tutorial/tutorial_dog.jpg'
 	experiment.push(prompt);
 
