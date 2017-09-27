@@ -225,7 +225,7 @@ function createExperiment() {
 
 	// generate third set of trials
 	var correctImageProbability = 0.7;
-	var correctLabelingProbability = 0.9;
+	var correctLabelingProbability = 0.75;
 	var imgCat = 'hotdog'
 
 	var prompt = {}
@@ -238,8 +238,8 @@ function createExperiment() {
 	createTrial( correctImageProbability, correctLabelingProbability, imgCat, prompt, "Is this a hot dog?", experiment, 10, 3);
 
 	// generate fourth set of trials
-	var correctImageProbability = 0.7;
-	var correctLabelingProbability = 0.9;
+	var correctImageProbability = 0.5;
+	var correctLabelingProbability = 0.75;
 	var imgCat = 'dog'
 	var prompt = {}
 
