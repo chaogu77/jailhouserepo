@@ -176,11 +176,11 @@ function createTrial( correctImageProbability, correctLabelingProbability, imgCa
 		if (Math.random() < correctImageProbability) {
 			imgPath = correctImages.pop()
 			correctImages.unshift(imgPath) // ! so list never becomes empty
-			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = false : trial.flag = true;
+			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = true : trial.flag = false;
 		} else {
 			imgPath = incorrectImages.pop()
 			incorrectImages.unshift(imgPath) // ! so list never becomes empty
-			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = true : trial.flag = false;
+			trial.flag = (Math.random() < correctLabelingProbability) ? trial.flag = false : trial.flag = true;
 		}
 		// Exception for owl images - no flags in either scenario
 		if (imgCat == 'owl') {trial.flag = null;}
